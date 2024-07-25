@@ -1,0 +1,106 @@
+﻿@using Newtonsoft.Json;
+@using CloudVOffice.Core.Domain.Pemission;
+@using System.Collections.Generic;
+@using Microsoft.AspNetCore.Http
+@using CloudVOffice.Services.Users;
+@inject IUserService _userService;
+<aside class="app-side fixed" id="app-side">
+    <!-- BEGIN .side-content -->
+    <div class="side-content ">
+        <!-- BEGIN .user-actions -->
+        <ul class="user-actions">
+            <li style="border-bottom:none">
+                <a href="/Applications">
+                    <i class="icon-th-small-outline" style="font-size:42px"></i>
+                </a>
+            </li>
+           
+        </ul>
+        <!-- END .user-actions -->
+        <div class="sidebarNavScroll">
+            <!-- BEGIN .side-nav -->
+            <nav class="side-nav">
+                <!-- BEGIN: side-nav-content -->
+                <ul class="unifyMenu" id="unifyMenu">
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        var nmenu =   _userService.GetUserMenu(Int64.Parse(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value.ToString()));
+                         var menujson = Newtonsoft.Json.JsonConvert.SerializeObject(nmenu);
+                            JsonConvert.DeserializeObject<List<Application>>(menujson);
+                        var menu = menujson;
+                        {
+                            var newMenu = JsonConvert.DeserializeObject<List<Application>>(menu);
+
+                            for (int k = 0; k < newMenu.Count; k++)
+                            {
+                                if (newMenu[k].AreaName == @ViewContext.RouteData.Values["area"].ToString())
+                                {
+                                    <li>
+                                        <a href="@newMenu[k].Url">
+                                            <span class="has-icon">
+                                                <i class="@newMenu[k].IconClass"></i>
+                                            </span>
+                                            <span class="nav-title">@newMenu[k].ApplicationName</span>
+                                        </a>
+                                    </li>
+                                    var subMenus = newMenu[k].Children;
+                                    for (int i = 0; i < subMenus.Count; i++)
+                                    {
+                                        if (subMenus[i].Children.Count > 0)
+                                        {
+                                            <li>
+                                                <a href="#" class="has-arrow" aria-expanded="false">
+                                                    <span class="has-icon">
+                                                        <i class="@subMenus[i].IconClass"></i>
+                                                    </span>
+                                                    <span class="nav-title">@subMenus[i].ApplicationName</span>
+                                                </a>
+                                                <ul aria-expanded="false">
+                                                    @for (int j = 0; j < subMenus[i].Children.Count; j++)
+                                                    {
+                                                        <li>
+                                                            <a href="@subMenus[i].Children[j].Url">@subMenus[i].Children[j].ApplicationName</a>
+                                                        </li>
+
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <a href="@subMenus[i].Url">
+                                                    <span class="has-icon">
+                                                        <i class="@subMenus[i].IconClass"></i>
+                                                    </span>
+                                                    <span class="nav-title">@subMenus[i].ApplicationName</span>
+                                                </a>
+                                            </li>
+                                        }
+
+
+
+                                    }
+                                    break;
+                                }
+                            }
+
+
+                        }
+                    }
+
+
+
+
+
+
+
+
+                </ul>
+                <!-- END: side-nav-content -->
+            </nav>
+            <!-- END: .side-nav -->
+        </div>
+    </div>
+    <!-- END: .side-content -->
+</aside>

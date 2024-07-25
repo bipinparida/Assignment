@@ -1,0 +1,252 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_MainAppLayout";
+    ViewData["Title"] = "Setup Dashboard";
+}
+
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <div class="page-icon">
+                    <i class="icon-laptop_windows"></i>
+                </div>
+                <div class="page-title">
+                    <h5>Set-Up Dashboard</h5>
+                    <h6 class="sub-heading">Welcome to Unify Admin Template</h6>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right-actions">
+                    <span class="last-login">Last Login: 2 hours ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-content">
+
+    <div class="row gutters">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+            <div class="card">
+                <div class="card-header">TO DO</div>
+                <div class="card-body">
+                    <ul class="stats">
+
+                        @{
+                            if (ViewBag.company == null)
+                            {
+                                <li>
+                                    <a href="/Setup/CompanyDetails/CompanyDetailsCreate">
+                                        <span class="icon">
+                                            <i class="icon-office"></i>
+                                        </span>
+                                        Company Setup
+                                    </a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/Setup/CompanyDetails/CompanyDetailsView">
+                                        <span class="icon">
+                                            <i class="icon-office"></i>
+                                        </span>
+                                        Company - @ViewBag.company.CompanyName
+                                    </a>
+                                </li>
+                            }
+                        }
+                        @{
+                            if (ViewBag.LetterHead == null)
+                            {
+                                <li>
+                                    <a href="/Setup/LetterHead/LetterHeadCreate">
+                                        <span class="icon">
+                                            <i class="icon-file-text"></i>
+                                        </span>
+                                        Letter Head Setup
+                                    </a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/Setup/LetterHead/LetterHeadView">
+                                        <span class="icon">
+                                            <i class="icon-file-text"></i>
+                                        </span>
+                                        Letter Head - @ViewBag.LetterHead.LetterHeadName
+                                    </a>
+                                </li>
+                            }
+                        }
+
+                        @{
+                            if (ViewBag.EmailDomain.Count == 0)
+                            {
+                                <li>
+                                    <a href="/Setup/EmailDomain/EmailDomainCreate">
+                                        <span class="icon">
+                                            <i class="icon-IE"></i>
+                                        </span>
+                                        Email Domain Setup
+                                    </a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/Setup/EmailDomain/EmailDomainView">
+                                        <span class="icon">
+                                            <i class="icon-IE"></i>
+                                        </span>
+                                        View Email Domain
+                                    </a>
+                                </li>
+                            }
+                        }
+
+                        @{
+                            if (ViewBag.EmailAccounts.Count == 0)
+                            {
+                                <li>
+                                    <a href="/Setup/EmailAccount/EmailAccountCreate">
+                                        <span class="icon">
+                                            <i class="icon-envelop"></i>
+                                        </span>
+                                        Email Account Setup
+                                    </a>
+                                </li>
+
+
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="/Setup/EmailAccount/EmailAccountView">
+                                        <span class="icon">
+                                            <i class="icon-envelop"></i>
+                                        </span>
+                                        View Email Account
+                                    </a>
+                                </li>
+                            }
+                        }
+
+                        <li>
+                            <a href="/Setup/User/CreateUser">
+                                <span class="icon">
+                                    <i class="icon-users"></i>
+                                </span>
+                                Add Users
+                            </a>
+
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col">
+            <a href="#" class="block-140">
+                <div class="icon primary">
+                    <i class="icon-users"></i>
+                </div>
+                <h5>@ViewBag.AllUsers.Count</h5>
+                <p>Total Users</p>
+            </a>
+            <a href="#" class="block-140">
+                <div class="icon success">
+                    <i class="icon-users"></i>
+                </div>
+                <h5>@ViewBag.ActiveUsers.Count</h5>
+                <p>Active Users</p>
+            </a>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col">
+            <a href="#" class="block-140">
+                <div class="icon secondary">
+                    <i class="icon-users"></i>
+                </div>
+                <h5>@ViewBag.InActiveUsers.Count</h5>
+                <p>InActive Users</p>
+            </a>
+            <a href="#" class="block-140">
+                <div class="icon other">
+                    <i class="icon-users"></i>
+                </div>
+                <h5>@ViewBag.SystemUsers.Count</h5>
+                <p>System Users</p>
+            </a>
+        </div>
+
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col">
+
+            <a href="#" class="block-140">
+                <div class="icon primary">
+                    <i class="icon-office"></i>
+                </div>
+                @{
+                    if (ViewBag.company == null)
+                    {
+                        <h5>0</h5>
+                    }
+                    else
+                    {
+                        <h5>1</h5>
+                    }
+                }
+
+                <p>Company</p>
+            </a>
+            <a href="#" class="block-140">
+                <div class="icon primary">
+                    <i class="icon-file-text"></i>
+                </div>
+
+                @{
+                    if (ViewBag.LetterHead == null)
+                    {
+                        <h5>0</h5>
+                    }
+                    else
+                    {
+                        <h5>1</h5>
+                    }
+                }
+
+                <p>Letter Head</p>
+            </a>
+        </div>
+
+
+        <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col">
+            <a href="#" class="block-140">
+                <div class="icon primary">
+                    <i class="icon-IE"></i>
+                </div>
+                <h5>@ViewBag.EmailDomain.Count</h5>
+                <p>Email Domains</p>
+            </a>
+            <a href="#" class="block-140">
+                <div class="icon primary">
+                    <i class="icon-envelop"></i>
+                </div>
+                <h5>@ViewBag.EmailAccounts.Count</h5>
+                <p>Email Accounts</p>
+            </a>
+        </div>
+    </div>
+</div>
+

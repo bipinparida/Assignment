@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = "_MainAppLayout";
+    ViewData["Title"] = "Installed Apps";
+}
+
+
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <div class="page-icon">
+                    <i class="icon-laptop_windows"></i>
+                </div>
+                <div class="page-title">
+                    <h5>Applications</h5>
+                    <h6 class="sub-heading">Welcome to Unify Admin Template</h6>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right-actions">
+                    <span class="last-login">Last Login: 2 hours ago</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+<div class="main-content">
+    <div class="row gutters">
+        @foreach (var items in ViewBag.apps)
+        {
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6">
+                <div class="info-stats3 blue" >
+                    <div class="icon-type pull-left" style="height:80px; width:80px; background:none; box-shadow:none">
+                        <img src="/Plugin/@items.SystemName/logo.png" style="height:75px; width:75px" />
+                    </div>
+                    <div class="sale-num">
+                        <b>@items.FriendlyName (@items.Group)</b>
+                       
+                        <p>@items.Description</p>
+                    </div>
+                    @if (items.IsInstalled == false)
+                    {
+                        <div class="chartist custom-two">
+                          
+                                          <a type="button" href="/Application/Applications/InstallApplication?InstallationUrl=@items.InstallationUrl" class="btn btn-primary btn-sm" style="color:white">Install</a>
+                      
+                            
+
+                        </div>
+
+                    }
+                    else
+                    {
+
+                        @if (items.IsNewVersion == true)
+                        {
+                            <a type="button" href="/Application/Applications/InstallApplication?InstallationUrl=@items.InstallationUrl" class="btn btn-primary btn-sm" style="color:white">Upgrade</a>
+                        }
+                        else
+                        {
+                            <span class="badge badge-pill badge-dark">Installed</span>
+                        }
+
+                       
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+</div>

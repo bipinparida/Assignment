@@ -1,0 +1,105 @@
+﻿@using Syncfusion.EJ2
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Unify Admin Panel">
+    <meta name="keywords" content="Admin, Dashboard, Bootstrap4, Sass, CSS3, HTML5, Responsive Dashboard, Responsive Admin Template, Admin Template, Best Admin Template, Bootstrap Template, Themeforest">
+    <meta name="author" content="Bootstrap Gallery">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <title> ERP - My Applications</title>
+
+  
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="~/app/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/app/fonts/icomoon/icomoon.css">
+    <link rel="stylesheet" href="~/app/css/main.css">
+
+	<link rel="shortcut icon" href="~/uimages/holyfit_logo.png">
+
+	<style>
+		.apps {
+			max-width: 850px !important;
+		}
+
+		@@media (min-width: 768px) .apps {
+			max-width: 850px !important;
+		}
+
+		@@media (min-width: 1400px) .apps {
+			max-width: 1320px;
+		}
+
+
+		@@media (min-width: 1200px) .apps {
+			max-width: 1140px;
+		}
+
+		@@media (min-width: 992px) .apps {
+			max-width: 960px;
+		}
+
+		@@media (min-width: 576px) .apps {
+			max-width: 540px;
+		}
+
+		.main-content {
+			position: relative;
+			margin-bottom: auto;
+			padding: 1.5rem;
+			min-height: 0px;
+			background: #f5f6fa;
+		}
+	</style>
+</head>
+<body class="full-screen">
+
+	<!-- BEGIN .app-wrap -->
+	
+		<!-- BEGIN .app-heading -->
+		@Html.Partial("_Header")
+
+		<!-- END: .app-heading -->
+		<!-- BEGIN .app-container -->
+		<div class="app-container">
+
+			<!-- BEGIN .app-main -->
+			<div class="app-main">
+				<!-- BEGIN .main-heading -->
+				
+				<!-- END: .main-heading -->
+				<!-- BEGIN .main-content -->
+				<div class="main-content" >
+					@RenderBody()
+				</div>
+				<!-- END: .main-content -->
+			</div>
+			<!-- END: .app-main -->
+
+		</div>
+		<!-- END: .app-container -->
+		<!-- BEGIN .main-footer -->
+		@Html.Partial("_Footer")
+		<!-- END: .main-footer -->
+	
+	<!-- END: .app-wrap -->
+	<!-- jQuery first, then Tether, then other JS. -->
+	<script src="~/app/js/jquery.js"></script>
+	<script src="~/app/js/tether.min.js"></script>
+	<script src="~/app/js/bootstrap.min.js"></script>
+	<script src="~/app/vendor/unifyMenu/unifyMenu.js"></script>
+	<script src="~/app/vendor/onoffcanvas/onoffcanvas.js"></script>
+	<script src="~/app/js/moment.js"></script>
+
+	<!-- Common JS -->
+	<script src="~/app/js/common.js"></script>
+</body>
+@await RenderSectionAsync("Scripts", required: false)
+</html>

@@ -1,0 +1,12 @@
+{
+  "ApplicationName": "Holifit",
+  "Url": "/Holifit/HolifitDashboard/Dashboard",
+  "IconImageUrl": "/Plugin/Holifit/logo.png",
+  "IconClass": "icon-th-large-outline",
+  "AreaName": "Holifit",
+  "Roles": [
+    "Holifit User"
+  ],
+  "Children": []
+
+}

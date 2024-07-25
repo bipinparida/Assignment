@@ -1,0 +1,254 @@
+﻿@model CloudVOffice.Data.DTO.Users.UserCreateDTO;
+@{
+	Layout = "_MainAppLayout";
+	ViewData["Title"] = "User Create";
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using CloudVOffice.Core.Domain.Common;
+<header class="main-heading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+				<div class="page-icon">
+					<i class="icon-laptop_windows"></i>
+				</div>
+				<div class="page-title">
+					<h5>CRM Dashboard</h5>
+					<h6 class="sub-heading">Welcome to Unify Admin Template</h6>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+				<div class="right-actions">
+					<span class="last-login">Last Login: 2 hours ago</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+
+<div class="main-content">
+	<div class="row gutters">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+			<div class="card">
+				<form asp-route="Setup/User/CreateUser" method="post" autocomplete="off">
+					<div asp-validation-summary="ModelOnly" class="message-error"></div>
+
+					<div class="card-header"><b>Basic Info</b></div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<input asp-for="@Model.UserId" type="hidden" />
+
+
+								<label for="Email" class="form-label">Email&nbsp;<span style="color:red;"><b>*</b></span></label>
+								@{
+									if (Model.UserId == null)
+									{
+										<input asp-for="@Model.Email" type="email" class="form-control" autofocus="autofocus" placeholder="Email" />
+
+									}
+									else
+									{
+										<input asp-for="@Model.Email" type="email" class="form-control" autofocus="autofocus" placeholder="Email" readonly />
+									}
+								}
+								<span asp-validation-for="Email"></span>
+							</div>
+
+							<div class="form-group col-md-3" style="display:none">
+
+								<label for="Password" class="form-label">Password</label>
+								<input asp-for="@Model.Password" type="text" class="form-control" autofocus="autofocus" placeholder="Password" />
+								<span asp-validation-for="Password"></span>
+							</div>
+
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+
+								<label for="FirstName" class="form-label">First Name&nbsp;<span style="color:red;"><b>*</b></span></label>
+								<input asp-for="@Model.FirstName" type="text" class="form-control" autofocus="autofocus" placeholder="First Name" />
+								<span asp-validation-for="FirstName"></span>
+							</div>
+							<div class="form-group col-md-3">
+
+								<label for="MiddleName" class="form-label">Middle Name</label>
+								<input asp-for="@Model.MiddleName" type="text" class="form-control" autofocus="autofocus" placeholder="Middle Name" />
+								<span asp-validation-for="MiddleName"></span>
+							</div>
+							<div class="form-group col-md-3">
+
+								<label for="LastName" class="form-label">Last Name</label>
+								<input asp-for="@Model.LastName" type="text" class="form-control" autofocus="autofocus" placeholder="Last Name" />
+								<span asp-validation-for="LastName"></span>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="card-header"><b>More Information</b></div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+
+								<label for="DateOfBirth" class="form-label">DOB</label>
+								<input asp-for="@Model.DateOfBirth" type="date" class="form-control" autofocus="autofocus" placeholder="DateOfBirth" />
+								<span asp-validation-for="DateOfBirth"></span>
+							</div>
+							<div class="form-group col-md-3">
+
+								<label for="PhoneNo" class="form-label">Phone No</label>
+								<input asp-for="@Model.PhoneNo" type="tel" class="form-control" autofocus="autofocus" placeholder="Phone No" />
+								<span asp-validation-for="PhoneNo"></span>
+							</div>
+
+							@*<div class="form-group col-md-3">
+
+							<label for="UserTypeId" class="form-label">User Type</label>
+
+							<select asp-for="@Model.UserTypeId" asp-items="@ViewBag.UserTypeList" class="form-control">
+
+							</select>
+
+							<span asp-validation-for="UserTypeId"></span>
+							</div>*@
+
+
+
+						</div>
+					</div>
+
+
+					<div class="card-header" style="display:none"><b>Roles</b></div>
+					<div class="card-body" style="display:none">
+
+						@for (int i = 0; i < Model.roles.Count; i++)
+						{
+
+							<div class="form-check form-check-inline col-md-3">
+								<label class="form-check-label">
+									<input asp-for="@Model.roles[i].IsSelected" type="checkbox" class="form-check-input" />
+									<label asp-for="@Model.roles[i].RoleId"> @Model.roles[i].RoleName</label>
+									<input asp-for="@Model.roles[i].RoleName" type="hidden" />
+									<input asp-for="@Model.roles[i].RoleId" type="hidden" />
+
+								</label>
+							</div>
+
+
+						}
+
+					</div>
+
+
+
+
+
+					<div class="card-body">
+
+						@{
+							if (Model.UserId == null)
+							{
+								<div class="form-check">
+									<label class="form-check-label">
+										<input class="form-check-input" type="checkbox" asp-for="@Model.WantToStayOnThisPage">
+										Want To Stay On This Page After Saving The Record
+									</label>
+								</div>
+
+
+
+							}
+
+						}
+						<div class="col-lg-2 col-md-2 col-sm-12">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+				</form>
+			</div>
+
+
+
+		</div>
+	</div>
+
+</div>
+
+
+@{
+
+	if (TempData["msg"] != null)
+	{
+		// <script type="text/javascript">
+		// 	const message = "@TempData["msg"]";
+		// 	if (message == "@((int)MessageEnum.Success)") {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "success",
+		// 			title: "User",
+		// 			text: "Successfully created.",
+		// 			type: "success"
+		// 		});
+		// 	}
+		// 	else if (message == "@((int)MessageEnum.Updated)") {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "success",
+		// 			title: "User",
+		// 			text: "Successfully updated.",
+		// 			type: "success"
+		// 		});
+		// 	}
+		// 	else if (message == "@((int)MessageEnum.Deleted)") {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "success",
+		// 			title: "User",
+		// 			text: "Successfully Deleted.",
+		// 			type: "success"
+		// 		});
+		// 	}
+		// 	else if (message == "@((int)MessageEnum.Duplicate)") {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "warning",
+		// 			title: "User",
+		// 			text: "Already Exists.",
+		// 			type: "warning"
+		// 		});
+		// 	}
+		// 	else if (message == "@((int)MessageEnum.UnExpectedError)") {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "danger",
+		// 			title: "User",
+		// 			text: "There is somthing going wrong.",
+		// 			type: "danger"
+		// 		});
+		// 	}
+		// 	else if (message == "@((int)MessageEnum.Error)") {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "error",
+		// 			title: "User",
+		// 			text: "There is somthing going wrong.",
+		// 			type: "error"
+		// 		});
+		// 	}
+		// 	else {
+		// 		sweetAlert({
+		// 			html: true,
+		// 			icon: "error",
+		// 			title: "User",
+		// 			text: message,
+		// 			type: "error"
+		// 		});
+		// 	}
+		// </script>
+	}
+}

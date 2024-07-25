@@ -1,0 +1,203 @@
+﻿@model CloudVOffice.Data.DTO.Company.CompanyDetailsDTO;
+@{
+	Layout = "_MainAppLayout";
+	ViewData["Title"] = "Company Details";
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<header class="main-heading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+				<div class="page-icon">
+					<i class="icon-laptop_windows"> </i>
+				</div>
+				<div class="page-title">
+					<h5>Company Details</h5>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+				<div class="right-actions">
+					<span class="last-login"> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+<div class="main-content">
+	<div class="row gutters">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+			<div class="card">
+				<form asp-route="Setup/CompanyDetails/CompanyDetailsCreate" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly" class="message-error"></div>
+					<div class="card-header"><b>Company Details</b></div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<input asp-for="@Model.CompanyDetailsId" type="hidden" />
+								<span asp-validation-for="CompanyDetailsId"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="CompanyName" class="form-label">CompanyName</label>
+								<input asp-for="@Model.CompanyName" type="text" class="form-control" autofocus="autofocus" placeholder="Company Name" />
+								<span asp-validation-for="CompanyName"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="ABBR" class="form-label">ABBR</label>
+								<input asp-for="@Model.ABBR" type="text" class="form-control" autofocus="autofocus" placeholder="ABBR" />
+								<span asp-validation-for="ABBR"></span>
+							</div>
+							
+						</div>
+
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="TaxId" class="form-label">Tax Id</label>
+								<input asp-for="@Model.TaxId" type="text" class="form-control" autofocus="autofocus" placeholder="Tax Id" />
+								<span asp-validation-for="TaxId"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="Domain" class="form-label">Domain</label>
+								<input asp-for="@Model.Domain" type="text" class="form-control" autofocus="autofocus" placeholder="Domain" />
+								<span asp-validation-for="Domain"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="CompanyLogo" class="form-label">Company Logo</label>
+								<input asp-for="@Model.CompanyLogoUp" type="file" class="form-control" autofocus="autofocus" placeholder="Company Logo" />
+								<span asp-validation-for="CompanyLogo"></span>
+								@{
+									if(Model.CompanyLogo != null)
+									{
+										<img src="/uploads/setup/@Model.CompanyLogo" style="height:100px; width:100px" />
+										<input type="hidden" asp-for="@Model.CompanyLogo">
+									}
+								}
+							</div>
+						</div>
+
+						<div class="form-row">
+
+							<div class="form-group col-md-3">
+								<label for="DateOfEstablishment" class="form-label">Date Of Establishment</label>
+								<input asp-for="@Model.DateOfEstablishment" type="date" class="form-control" autofocus="autofocus" placeholder="Date Of Establishment" />
+								<span asp-validation-for="DateOfEstablishment"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="DateOfIncorporation" class="form-label">Date Of Incorporation</label>
+								<input asp-for="@Model.DateOfIncorporation" type="date" class="form-control" autofocus="autofocus" placeholder="Date Of Incorporation" />
+								<span asp-validation-for="DateOfIncorporation"></span>
+							</div>
+							
+						</div>
+
+						<div class="form-row">
+
+							<div class="form-group col-md-6">
+								<label for="AddressLine1" class="form-label">AddressLine1</label>
+								<input asp-for="@Model.AddressLine1" type="text" class="form-control" autofocus="autofocus" placeholder="AddressLine1" />
+								<span asp-validation-for="AddressLine1"></span>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="AddressLine2" class="form-label">AddressLine2</label>
+								<input asp-for="@Model.AddressLine2" type="text" class="form-control" autofocus="autofocus" placeholder="AddressLine2" />
+								<span asp-validation-for="AddressLine2"></span>
+							</div>
+							
+
+						</div>
+						
+						<div class="form-row">
+
+							<div class="form-group col-md-3">
+								<label for="City" class="form-label">City</label>
+								<input asp-for="@Model.City" type="text" class="form-control" autofocus="autofocus" placeholder="City" />
+								<span asp-validation-for="City"></span>
+							</div>
+
+
+							<div class="form-group col-md-3">
+								<label for="State" class="form-label">State</label>
+								<input asp-for="@Model.State" type="text" class="form-control" autofocus="autofocus" placeholder="State" />
+								<span asp-validation-for="State"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="Country" class="form-label">Country</label>
+								<input asp-for="@Model.Country" type="text" class="form-control" autofocus="autofocus" placeholder="Country" />
+								<span asp-validation-for="Country"></span>
+							</div>							
+
+						</div>
+
+						<div class="form-row">
+
+							<div class="form-group col-md-3">
+								<label for="PostalCode" class="form-label">Postal Code</label>
+								<input asp-for="@Model.PostalCode" type="text" class="form-control" autofocus="autofocus" placeholder="Postal Code" />
+								<span asp-validation-for="PostalCode"></span>
+							</div>
+
+							<div class="form-group col-md-3">
+								<label for="EmailAddress" class="form-label">EmailAddress</label>
+								<input asp-for="@Model.EmailAddress" type="text" class="form-control" autofocus="autofocus" placeholder="Email Address" />
+								<span asp-validation-for="EmailAddress"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="PhoneNumber" class="form-label">PhoneNumber</label>
+								<input asp-for="@Model.PhoneNumber" type="text" class="form-control" autofocus="autofocus" placeholder="Phone Number" />
+								<span asp-validation-for="PhoneNumber"></span>
+							</div>
+
+						</div>
+
+						<div class="form-row">
+
+							<div class="form-group col-md-3">
+								<label for="Fax" class="form-label">Fax</label>
+								<input asp-for="@Model.Fax" type="text" class="form-control" autofocus="autofocus" placeholder="Fax" />
+								<span asp-validation-for="Fax"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="Website" class="form-label">Website</label>
+								<input asp-for="@Model.Website" type="text" class="form-control" autofocus="autofocus" placeholder="Website" />
+								<span asp-validation-for="Website"></span>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="card-body">
+						<div class="col-lg-2 col-md-2 col-sm-12">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts{
+	<script>
+		function readURL(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+					$('#imagePreview').hide();
+					$('#imagePreview').fadeIn(650);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		$("#imageUpload").change(function () {
+			readURL(this);
+		});
+	</script>
+}

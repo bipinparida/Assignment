@@ -1,0 +1,66 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<OutputPath>..\..\Presentation\CloudVOffice.Web\Plugins\Holifit</OutputPath>
+		<OutDir>$(OutputPath)</OutDir>
+		<!--Set this parameter to true to get the dlls copied from the NuGet cache to the output of your project.
+    You need to set this parameter to true if your plugin has a nuget package 
+    to ensure that the dlls copied from the NuGet cache to the output of your project-->
+		<CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+
+	<ItemGroup>
+		<None Remove="Application.json" />
+		<None Remove="logo.png" />
+		<None Remove="plugin.json" />
+		<None Remove="roles.json" />
+		<None Remove="Views\HolifitDashboard\Dashboard.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Application.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="logo.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="plugin.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="roles.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Include="Views\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<PackageReference Include="EPPlus" Version="7.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.7" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<ClearPluginAssemblies Include="$(MSBuildProjectDirectory)\..\..\Build\ClearPluginAssemblies.proj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Presentation\CloudVOffice.Web\CloudVOffice.Web.csproj" />
+	</ItemGroup>
+
+
+	<!-- This target execute after "Build" target -->
+	<Target Name="CloudVOfficeTarget" AfterTargets="Build">
+		<!-- Delete unnecessary libraries from plugins path -->
+		<MSBuild Projects="@(ClearPluginAssemblies)" Properties="PluginPath=$(MSBuildProjectDirectory)\$(OutDir)" Targets="CloudVOfficeClear" />
+	</Target>
+
+</Project>

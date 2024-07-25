@@ -1,0 +1,14 @@
+{
+  "Group": "Holifit",
+  "FriendlyName": "Holifit",
+  "SystemName": "Holifit",
+  "Version": 0.1,
+  "SupportedVersions": [ "0.1" ],
+  "Author": "Appman team",
+  "DisplayOrder": 1,
+  "FileName": "Holifit.dll",
+  "Description": "Holifit",
+  "InstallationUrl": "/Holifit/HolifitInstall/Install",
+  "UnInstallationUrl": "/Holifit/HolifitInstall/UnInstall",
+  "Dependency": []
+}

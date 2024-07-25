@@ -1,0 +1,140 @@
+﻿@model CloudVOffice.Data.DTO.Users.UserCreateDTO;
+@using Newtonsoft.Json;
+@using CloudVOffice.Core.Domain.Pemission;
+@using System.Collections.Generic;
+@using CloudVOffice.Services.Users;
+@using Microsoft.Extensions.Caching.Memory;
+@inject IUserService _userService;
+@inject IMemoryCache _cache;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="apps container">
+	<div class="apps">
+
+		<div role="listbox" class="row user-select-none mt-5">
+
+			@if (User.Identity.IsAuthenticated)
+			{
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+					<div class="card">
+						<form asp-route="Setup/User/CreateUser" method="post" autocomplete="off">
+							<div asp-validation-summary="ModelOnly" class="message-error"></div>
+
+							<div class="card-header"><b>Basic Info</b></div>
+							<div class="card-body">
+								<div class="form-row">
+									<div class="form-group col-md-4">
+										<input asp-for="@Model.UserId" type="hidden" />
+
+
+										<label for="Email" class="form-label">Email&nbsp;<span style="color:red;"><b>*</b></span></label>
+										@{
+											if (Model.UserId == null)
+											{
+												<input asp-for="@Model.Email" type="email" class="form-control" autofocus="autofocus" placeholder="Email" />
+
+											}
+											else
+											{
+												<input asp-for="@Model.Email" type="email" class="form-control" autofocus="autofocus" placeholder="Email" readonly />
+											}
+										}
+
+
+										<span asp-validation-for="Email"></span>
+									</div>
+
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-4">
+
+										<label for="FirstName" class="form-label">First Name&nbsp;<span style="color:red;"><b>*</b></span></label>
+										<input asp-for="@Model.FirstName" readonly type="text" class="form-control" autofocus="autofocus" placeholder="First Name" />
+										<span asp-validation-for="FirstName"></span>
+									</div>
+									<div class="form-group col-md-4">
+
+										<label for="MiddleName" class="form-label">Middle Name</label>
+										<input asp-for="@Model.MiddleName" readonly type="text" class="form-control" autofocus="autofocus" placeholder="Middle Name" />
+										<span asp-validation-for="MiddleName"></span>
+									</div>
+									<div class="form-group col-md-4">
+
+										<label for="LastName" class="form-label">Last Name</label>
+										<input asp-for="@Model.LastName" readonly type="text" class="form-control" autofocus="autofocus" placeholder="Last Name" />
+										<span asp-validation-for="LastName"></span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="card-header"><b>More Information</b></div>
+							<div class="card-body">
+								<div class="form-row">
+									<div class="form-group col-md-4">
+
+										<label for="DateOfBirth" class="form-label">DOB</label>
+										<input asp-for="@Model.DateOfBirth" readonly type="date" class="form-control" autofocus="autofocus" placeholder="DateOfBirth" />
+										<span asp-validation-for="DateOfBirth"></span>
+									</div>
+									<div class="form-group col-md-4">
+
+										<label for="PhoneNo" class="form-label">Phone No</label>
+										<input asp-for="@Model.PhoneNo" readonly type="tel" class="form-control" autofocus="autofocus" placeholder="Phone No" />
+										<span asp-validation-for="PhoneNo"></span>
+									</div>
+
+									<div class="form-group col-md-4">
+
+										<label for="UserTypeId" class="form-label">User Type</label>
+
+										<select asp-for="@Model.UserTypeId" readonly asp-items="@ViewBag.UserTypeList" class="form-control">
+										</select>
+
+										<span asp-validation-for="UserTypeId"></span>
+									</div>
+
+
+
+								</div>
+							</div>
+
+
+							<div class="card-header"><b>Roles</b></div>
+							<div class="card-body">
+
+								@for (int i = 0; i < Model.roles.Count; i++)
+								{
+
+									<div class="form-check form-check-inline col-md-3">
+										<label class="form-check-label">
+											<input asp-for="@Model.roles[i].IsSelected" disabled type="checkbox" class="form-check-input" />
+											<label asp-for="@Model.roles[i].RoleId"> @Model.roles[i].RoleName</label>
+											<input asp-for="@Model.roles[i].RoleName" type="hidden" />
+											<input asp-for="@Model.roles[i].RoleId" type="hidden" />
+
+										</label>
+									</div>
+
+
+								}
+
+							</div>
+
+
+						</form>
+					</div>
+
+
+				</div>
+
+
+
+			}
+
+		</div>
+	</div>
+</div>

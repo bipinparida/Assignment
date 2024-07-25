@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Library", "Library", "{E609A01A-F889-4EE6-8665-2DDCD1C7DD6E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{AA00359E-BE0A-4C17-B416-63E87E8B2C34}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{94EFDF8F-BB1B-43E6-BECB-CE10FC2F03B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanPlugin", "CleanPlugin", "{DE701F92-F95E-45E5-B2D2-B9C998979EDF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudVOffice.Core", "Library\CloudVOffice.Core\CloudVOffice.Core.csproj", "{90D2D451-36A3-4F6D-AEE9-2072763A558A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudVOffice.Services", "Library\CloudVOffice.Services\CloudVOffice.Services.csproj", "{5F00EE88-5C0A-47DC-9672-DC485C5DB28D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudVOffice.Web", "Presentation\CloudVOffice.Web\CloudVOffice.Web.csproj", "{04FBC946-B213-4F98-A390-8EC0B29452B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClearPluginAssemblies", "Build\src\ClearPluginAssemblies\ClearPluginAssemblies.csproj", "{992079EC-C61D-40BF-A12D-C78182584088}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudVOffice.Web.Framework", "Presentation\CloudVOffice.Web.Framework\CloudVOffice.Web.Framework.csproj", "{C1021BA7-A4C9-4080-8602-C0838CCA73B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudVOffice.Data", "Library\CloudVOffice.Data\CloudVOffice.Data.csproj", "{27240D01-4DED-4BAE-BD8D-3806331976A5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.API", "Plugin\Web.API\Web.API.csproj", "{C3D3EF49-2D25-409D-9BE8-3E4B5DF6135E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Holifit", "Plugin\Holifit\Holifit.csproj", "{7B37C9E9-4913-4873-8464-482F70A244B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90D2D451-36A3-4F6D-AEE9-2072763A558A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D2D451-36A3-4F6D-AEE9-2072763A558A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D2D451-36A3-4F6D-AEE9-2072763A558A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D2D451-36A3-4F6D-AEE9-2072763A558A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F00EE88-5C0A-47DC-9672-DC485C5DB28D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F00EE88-5C0A-47DC-9672-DC485C5DB28D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F00EE88-5C0A-47DC-9672-DC485C5DB28D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F00EE88-5C0A-47DC-9672-DC485C5DB28D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04FBC946-B213-4F98-A390-8EC0B29452B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04FBC946-B213-4F98-A390-8EC0B29452B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04FBC946-B213-4F98-A390-8EC0B29452B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04FBC946-B213-4F98-A390-8EC0B29452B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{992079EC-C61D-40BF-A12D-C78182584088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992079EC-C61D-40BF-A12D-C78182584088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992079EC-C61D-40BF-A12D-C78182584088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992079EC-C61D-40BF-A12D-C78182584088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1021BA7-A4C9-4080-8602-C0838CCA73B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1021BA7-A4C9-4080-8602-C0838CCA73B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1021BA7-A4C9-4080-8602-C0838CCA73B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1021BA7-A4C9-4080-8602-C0838CCA73B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27240D01-4DED-4BAE-BD8D-3806331976A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27240D01-4DED-4BAE-BD8D-3806331976A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27240D01-4DED-4BAE-BD8D-3806331976A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27240D01-4DED-4BAE-BD8D-3806331976A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3D3EF49-2D25-409D-9BE8-3E4B5DF6135E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3D3EF49-2D25-409D-9BE8-3E4B5DF6135E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3D3EF49-2D25-409D-9BE8-3E4B5DF6135E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3D3EF49-2D25-409D-9BE8-3E4B5DF6135E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B37C9E9-4913-4873-8464-482F70A244B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B37C9E9-4913-4873-8464-482F70A244B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B37C9E9-4913-4873-8464-482F70A244B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B37C9E9-4913-4873-8464-482F70A244B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{90D2D451-36A3-4F6D-AEE9-2072763A558A} = {E609A01A-F889-4EE6-8665-2DDCD1C7DD6E}
+		{5F00EE88-5C0A-47DC-9672-DC485C5DB28D} = {E609A01A-F889-4EE6-8665-2DDCD1C7DD6E}
+		{04FBC946-B213-4F98-A390-8EC0B29452B1} = {AA00359E-BE0A-4C17-B416-63E87E8B2C34}
+		{992079EC-C61D-40BF-A12D-C78182584088} = {DE701F92-F95E-45E5-B2D2-B9C998979EDF}
+		{C1021BA7-A4C9-4080-8602-C0838CCA73B4} = {AA00359E-BE0A-4C17-B416-63E87E8B2C34}
+		{27240D01-4DED-4BAE-BD8D-3806331976A5} = {E609A01A-F889-4EE6-8665-2DDCD1C7DD6E}
+		{C3D3EF49-2D25-409D-9BE8-3E4B5DF6135E} = {94EFDF8F-BB1B-43E6-BECB-CE10FC2F03B8}
+		{7B37C9E9-4913-4873-8464-482F70A244B2} = {94EFDF8F-BB1B-43E6-BECB-CE10FC2F03B8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DEF2CA5-EC2C-4C0B-878F-AEA8D00FE3E6}
+	EndGlobalSection
+EndGlobal

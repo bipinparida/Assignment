@@ -1,0 +1,28 @@
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BarcodeLib" Version="3.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+
+	  <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+
+	  <PackageReference Include="ZXing.Net" Version="0.16.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CloudVOffice.Core\CloudVOffice.Core.csproj" />
+    <ProjectReference Include="..\CloudVOffice.Data\CloudVOffice.Data.csproj" />
+  </ItemGroup>
+
+</Project>

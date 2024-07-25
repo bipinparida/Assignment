@@ -1,0 +1,518 @@
+﻿
+@using Syncfusion.EJ2
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!doctype html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<meta name="description" content="Unify Admin Panel">
+	<meta name="keywords" content="Invoice, Admin, Dashboard, Bootstrap4, Sass, CSS3, HTML5, Responsive Dashboard, Responsive Admin Template, Admin Template, Best Admin Template, Bootstrap Template, Themeforest">
+	<meta name="author" content="Bootstrap Gallery">
+	<link rel="shortcut icon" href="img/Auras.jpg">
+	<title>ERP - @ViewData["Title"]</title>
+
+
+	<link href="~/css/bootstrap5.css" rel="stylesheet" />
+	<link href="~/css/adaptive.css" rel="stylesheet" />
+    
+	<!-- Common CSS -->
+	<link rel="stylesheet" href="~/app/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/app/fonts/icomoon/icomoon.css">
+	<link rel="stylesheet" href="~/app/css/main.css">
+
+    <link rel="shortcut icon" href="~/uimages/holyfit_logo.png">
+
+">
+
+    <style>
+        a.block-140 .icon.success {
+            background: #268a3c;
+        }
+
+        a.block-140 .icon.other {
+            background:  #f4c82e;
+        }
+
+       
+        .main-content {
+            position: relative;
+            margin-bottom: auto;
+            padding: 1.5rem;
+            min-height: 0px;
+            background: #f5f6fa;
+        }
+        .e-grid .e-gridheader {
+            background-color: #fff;
+            border-bottom-color: #dee2e6;
+            border-top-color: #dee2e6;
+            color: black;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .e-grid .e-headercelldiv {
+            font-size: 15px;
+        }
+
+        .e-grid td.e-active {
+    background: #e6eaed;
+    color: #212529;
+}
+        .btn {
+            color: #ffffff
+        }
+    </style>
+    <style>
+       
+        .fabric .empimg {
+            background-color: #0078d6;
+        }
+
+        .material .empimg {
+            background-color: #e3165b;
+        }
+
+        .highcontrast .empimg {
+            background-color: #ffd939;
+        }
+
+        .fluent .empimg {
+            background-color: #106EBE;
+        }
+
+        _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-Male::before,
+        _:-ms-fullscreen, :root .highcontrast .e-userimg.sf-icon-FeMale::before {
+            color: black;
+        }
+
+        .highcontrast .e-userimg.sf-icon-Male::before,
+        .highcontrast .e-userimg.sf-icon-FeMale::before {
+            color: black;
+        }
+
+        .bootstrap .empimg {
+            background-color: #0078d6;
+        }
+
+        .bootstrap4 .empimg {
+            background-color: #0078d6;
+        }
+
+        .bootstrap5 .empimg {
+            background-color: #0078d6;
+        }
+
+        #Emptext {
+            top: -12px;
+            left: 41px;
+            position: relative;
+        }
+
+        .e-grid.e-rtl #Emptext {
+            top: -12px;
+            left: -41px;
+            position: relative;
+        }
+
+        .empimg {
+            height: 27px;
+            width: 29px;
+            border-radius: 14px;
+        }
+
+        .e-userimg.sf-icon-Male::before,
+        .e-userimg.sf-icon-FeMale::before {
+            font-size: 13px;
+        }
+
+        .e-userimg.sf-icon-Male, .e-userimg.sf-icon-FeMale {
+            margin: 0px 8px;
+            line-height: 26px;
+            color: white;
+            font-size: 13px;
+        }
+
+            .e-userimg.sf-icon-Male::before {
+                content: '\e700';
+            }
+
+            .e-userimg.sf-icon-FeMale::before {
+                content: '\e701';
+            }
+
+
+   
+
+        .highcontrast #msg {
+            color: #FFFFFF
+        }
+
+        .e-bigger .e-grid .statustxt {
+            position: relative;
+            top: -2px;
+        }
+
+        .rating .star {
+            font-size: 132%;
+            color: lightgrey;
+        }
+
+            .rating .star.checked {
+                color: #ffa600;
+            }
+
+            .rating .star:before {
+                content: '★';
+            }
+
+        td.e-rowcell .statustxt.e-activecolor {
+            color: #00cc00;
+            position: relative;
+            top: 9px;
+        }
+
+        td.e-rowcell .statustxt.e-inactivecolor {
+            color: #e60000;
+            position: relative;
+            top: 9px;
+        }
+
+        .bootstrap5 td.e-rowcell .statustxt.e-inactivecolor,
+        .bootstrap5 td.e-rowcell .statustxt.e-activecolor {
+            top: 8px;
+        }
+
+        .bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-activecolor,
+        .bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-inactivecolor {
+            position: relative;
+            top: 1.5px;
+        }
+
+        .e-bigger.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-activecolor,
+        .e-bigger.bootstrap5 .e-checkboxfiltertext .statustemp .statustxt.e-inactivecolor {
+            top: -0.5px;
+        }
+
+        .bootstrap5 .e-checkboxfiltertext #Trusttext {
+            margin-left: -4px;
+        }
+
+        .statustemp.e-inactivecolor {
+            background-color: #ffd7cc;
+        }
+
+        .statustemp.e-activecolor {
+            background-color: #ccffcc;
+        }
+
+        .statustxt.e-activecolor {
+            color: #00cc00;
+        }
+
+        .statustxt.e-inactivecolor {
+            color: #e60000;
+        }
+
+        #Trusttext {
+            position: relative;
+            top: 1px;
+        }
+
+        .e-image {
+            height: 13px;
+            width: 14px;
+        }
+
+        .statustemp.e-inactivecolor {
+            width: 64px;
+        }
+
+        .statustemp.e-activecolor {
+            width: 57px;
+        }
+
+        .statustemp {
+            position: relative;
+            height: 19px;
+            border-radius: 5px;
+            text-align: center
+        }
+
+        #msg {
+            font-family: "Segoe UI", "GeezaPro", "DejaVu Serif", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.95;
+            color: #333;
+            float: right;
+            margin-top: 3px;
+        }
+
+        @@media only screen and (max-width: 370px) {
+            #msg {
+                float: left;
+                margin-top: 3px;
+            }
+
+            #GridOverview {
+                margin-top: 36px;
+            }
+        }
+
+        #samplecontainer {
+            padding-top: 5px;
+        }
+
+        #myProgress {
+            position: relative;
+            height: 18px;
+            width: 10em;
+            text-align: left;
+            background-color: white;
+        }
+
+        .highcontrast .e-grid #myProgress {
+            background-color: black;
+        }
+
+        #myBar {
+            position: absolute;
+            width: 10%;
+            height: 100%;
+            background-color: #00b300;
+        }
+
+            #myBar.progressdisable {
+                background-color: #df2222;
+            }
+
+        #pbarlabel {
+            position: relative;
+            left: 10px;
+            line-height: 18px;
+            font-size: 10px;
+            color: white;
+        }
+    </style>
+    <style type="text/css">
+        .e-kanban .header-template-wrap {
+            display: inline-flex;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+            .e-kanban .header-template-wrap .header-icon {
+                font-family: 'Kanban priority icons';
+                margin-top: 3px;
+                width: 10%;
+            }
+
+            .e-kanban .header-template-wrap .header-text {
+                margin-left: 15px;
+            }
+
+        .e-kanban.e-rtl .header-template-wrap .header-text {
+            margin-right: 15px;
+        }
+
+        .e-kanban.e-rtl .e-card-avatar {
+            left: 12px;
+            right: auto;
+        }
+
+        .e-kanban .e-card-avatar {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            background: gainsboro;
+            color: #6b6b6b;
+            border-radius: 50%;
+            position: absolute;
+            right: 12px;
+            bottom: 10px;
+            font-size: 12px;
+            font-weight: 400;
+           
+        }
+
+        .e-kanban .Open::before {
+            content: '\e700';
+            color: #0251cc;
+            font-size: 16px;
+        }
+
+        .e-kanban .InProgress::before {
+            content: '\e703';
+            color: #ea9713;
+            font-size: 16px;
+        }
+
+        .e-kanban .e-image img {
+            background: #ececec;
+            border: 1px solid #c8c8c8;
+            border-radius: 50%;
+        }
+
+        .e-kanban .Review::before {
+            content: '\e701';
+            color: #8e4399;
+            font-size: 16px;
+        }
+
+        .e-kanban .Close::before {
+            content: '\e702';
+            color: #63ba3c;
+            font-size: 16px;
+        }
+
+        .e-kanban .e-card .e-card-tag-field {
+            background: #ececec;
+            color: #6b6b6b;
+            margin-right: 5px;
+            line-height: 1.1;
+            font-size: 13px;
+            border-radius: 3px;
+            padding: 4px;
+        }
+
+        .e-kanban .e-card-custom-footer {
+            display: flex;
+            padding: 0px 12px 12px;
+            line-height: 1;
+            height: 35px;
+        }
+
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Low.e-selection:hover,
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Low,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Low {
+            border-left: 3px solid #ffd600;
+        }
+
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.High.e-selection:hover,
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.High,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.High {
+            border-left: 3px solid #990099;
+        }
+
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Normal.e-selection:hover,
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Normal,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Normal {
+            border-left: 3px solid #66cc33;
+        }
+
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Critical.e-selection:hover,
+        .e-kanban .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Critical,
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card.Critical {
+            border-left: 3px solid #cc0000;
+        }
+
+        .e-kanban.e-rtl .e-kanban-content .e-content-row .e-content-cells .e-card-wrapper .e-card {
+            border-left: none;
+        }
+
+        .fluent-dark .e-kanban .e-card .e-card-tag-field,
+        .bootstrap5-dark .e-kanban .e-card .e-card-tag-field,
+        .tailwind-dark .e-kanban .e-card .e-card-tag-field,
+        .bootstrap-dark .e-kanban .e-card .e-card-tag-field,
+        .highcontrast .e-kanban .e-card .e-card-tag-field {
+            background: #4b5563;
+            color: #fff;
+        }
+
+        .fluent-dark .e-kanban .e-card-avatar,
+        .bootstrap5-dark .e-kanban .e-card-avatar,
+        .tailwind-dark .e-kanban .e-card-avatar,
+        .bootstrap-dark .e-kanban .e-card-avatar,
+        .highcontrast .e-kanban .e-card-avatar {
+            background: #4b5563;
+            color: #fff;
+        }
+
+        @@font-face {
+            font-family: 'Kanban priority icons';
+            src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        [class^="sf-icon-"],
+        [class*=" sf-icon-"] {
+            font-family: 'Kanban priority icons' !important;
+            speak: none;
+            font-size: 55px;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .field-validation-error {
+            color: red
+        }
+
+        .message-error {
+            color: red
+        }
+    </style>
+	
+    <script src="~/app/js/ej2.min.js"></script>
+    <script src="~/app/js/jquery.js"></script>
+</head>
+<body>
+
+	<!-- BEGIN .app-wrap -->
+	<div class="app-wrap">
+		<!-- BEGIN .app-heading -->
+		@Html.Partial("_MainHeader")
+		<!-- END: .app-heading -->
+		<!-- BEGIN .app-container -->
+		<div class="app-container">
+			<!-- BEGIN .app-side -->
+			@Html.Partial("_MainNavLayout")
+			<!-- END: .app-side -->
+			<!-- BEGIN .app-main -->
+			<div class="app-main">
+				@RenderBody()
+				<!-- BEGIN .main-heading -->
+				
+				<!-- END: .main-content -->
+			</div>
+			<!-- END: .app-main -->
+		</div>
+		<!-- END: .app-container -->
+		<!-- BEGIN .main-footer -->
+		
+			@Html.Partial("_Footer")
+		
+		<!-- END: .main-footer -->
+	</div>
+	<!-- END: .app-wrap -->
+	<!-- jQuery first, then Tether, then other JS. -->
+	<!-- END: .app-wrap -->
+	<!-- jQuery first, then Tether, then other JS. -->
+	
+	<script src="~/app/js/tether.min.js"></script>
+	<script src="~/app/js/bootstrap.min.js"></script>
+	<script src="~/app/vendor/unifyMenu/unifyMenu.js"></script>
+	<script src="~/app/vendor/onoffcanvas/onoffcanvas.js"></script>
+	<script src="~/app/js/moment.js"></script>
+	<script src="~/app/vendor/slimscroll/slimscroll.min.js"></script>
+	<script src="~/app/vendor/slimscroll/custom-scrollbar.js"></script>
+	<!-- Common JS -->
+	<script src="~/app/js/common.js"></script>
+ 	<ejs-scripts></ejs-scripts>
+        @RenderSection("scripts", false);
+</body>
+
+</html>

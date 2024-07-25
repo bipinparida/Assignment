@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\web.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\web.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+		<PackageReference Include="LigerShark.WebOptimizer.Core" Version="3.0.372" />
+		<PackageReference Include="WebMarkupMin.AspNetCore7" Version="2.13.5" />
+		<PackageReference Include="WebMarkupMin.NUglify" Version="2.13.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Library\CloudVOffice.Services\CloudVOffice.Services.csproj" />
+	</ItemGroup>
+</Project>

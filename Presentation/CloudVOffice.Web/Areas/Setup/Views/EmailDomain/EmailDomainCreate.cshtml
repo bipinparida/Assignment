@@ -1,0 +1,117 @@
+﻿@model CloudVOffice.Data.DTO.Comunication.EmailDomainDTO;
+@{
+	Layout = "_MainAppLayout";
+	ViewData["Title"] = "Email Domain";
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<header class="main-heading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+				<div class="page-icon">
+					<i class="icon-laptop_windows"></i>
+				</div>
+				<div class="page-title">
+					<h5>Email Domain</h5>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+				<div class="right-actions">
+					<span class="last-login"> </span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div class="main-content">
+	<div class="row gutters">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+			<div class="card">
+				<form asp-route="Setup/EmailDomain/EmailDomainCreate" method="post" autocomplete="off">
+					<div asp-validation-summary="ModelOnly" class="message-error"></div>
+					<div class="card-header"><b>Email Domain</b></div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<input asp-for="@Model.EmailDomainId" type="hidden" />
+								<span asp-validation-for="EmailDomainId"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="DomainName" class="form-label">Domain Name&nbsp;<span style="color:red;"><b>*</b></span></label>
+								<input asp-for="@Model.DomainName" type="text" class="form-control" autofocus="autofocus" placeholder="Domain Name" />
+								<span asp-validation-for="DomainName"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="IncomingServer" class="form-label">Incoming Server&nbsp;<span style="color:red;"><b>*</b></span></label>
+								<input asp-for="@Model.IncomingServer" type="text" class="form-control" autofocus="autofocus" placeholder="Incoming Server" />
+								<span asp-validation-for="IncomingServer"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="IncomingPort" class="form-label">Incoming Port</label>
+								<input asp-for="@Model.IncomingPort" type="text" class="form-control" autofocus="autofocus" placeholder="Incoming Port" />
+								<span asp-validation-for="IncomingPort"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="OutingServer" class="form-label">Outing Server&nbsp;<span style="color:red;"><b>*</b></span></label>
+								<input asp-for="@Model.OutingServer" type="text" class="form-control" autofocus="autofocus" placeholder="Outing Server" />
+								<span asp-validation-for="OutingServer"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="OutgoingPort" class="form-label">Outgoing Port</label>
+								<input asp-for="@Model.OutgoingPort" type="text" class="form-control" autofocus="autofocus" placeholder="Outgoing Port" />
+								<span asp-validation-for="OutgoingPort"></span>
+							</div>
+							
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="IncomingIsIMAP" class="form-label">Incoming Is IMAP</label>
+								<input asp-for="@Model.IncomingIsIMAP" type="checkbox" class="form-control" autofocus="autofocus" placeholder="Incoming Is IMAP" />
+								<span asp-validation-for="IncomingIsIMAP"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="IncomingIsSsl" class="form-label">Incoming Is Ssl</label>
+								<input asp-for="@Model.IncomingIsSsl" type="checkbox" class="form-control" autofocus="autofocus" placeholder="Incoming Is Ssl" />
+								<span asp-validation-for="IncomingIsSsl"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="IncomingIsStartTLs" class="form-label">Incoming Is Start TLs</label>
+								<input asp-for="@Model.IncomingIsStartTLs" type="checkbox" class="form-control" autofocus="autofocus" placeholder="Incoming Is Start TLs" />
+								<span asp-validation-for="IncomingIsStartTLs"></span>
+							</div>
+							
+							
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="OutgoingIsTLs" class="form-label">Outgoing Is TLs</label>
+								<input asp-for="@Model.OutgoingIsTLs" type="checkbox" class="form-control" autofocus="autofocus" placeholder="Outgoing Is TLs" />
+								<span asp-validation-for="OutgoingIsTLs"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="OutgoingIsSsl" class="form-label">Outgoing Is Ssl</label>
+								<input asp-for="@Model.OutgoingIsSsl" type="checkbox" class="form-control" autofocus="autofocus" placeholder="Outgoing Is Ssl" />
+								<span asp-validation-for="OutgoingIsSsl"></span>
+							</div>
+					
+						</div>
+					</div>
+					
+					<div class="card-body">
+						<div class="col-lg-2 col-md-2 col-sm-12">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+
+					
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

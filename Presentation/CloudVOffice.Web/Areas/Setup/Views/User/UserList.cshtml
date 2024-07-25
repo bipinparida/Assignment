@@ -1,0 +1,219 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_MainAppLayout";
+    ViewData["Title"] = "User List";
+}
+@addTagHelper *, Syncfusion.EJ2
+@using CloudVOffice.Core.Domain.Common;
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <div class="page-icon">
+                    <i class="icon-laptop_windows"></i>
+                </div>
+                <div class="page-title">
+                    <h5>CRM Dashboard</h5>
+                    <h6 class="sub-heading"> </h6>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right-actions">
+                    <span class="last-login"> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+ 
+<div class="main-content">
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="card">
+                <div class="card-header">
+
+                    <div class="row">
+                        <div class="col-md-10">
+                           Users
+                        </div>
+                        <div class="col-md-2 text-right float-right">
+                            <a href="/Setup/User/CreateUser" class="btn btn-success btn-sm"><i class="icon icon-add"></i> Add User</a>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="card-body">
+                   
+                    <ejs-grid id="GridOverview" dataSource="ViewBag.UserList"  allowFiltering="true" allowSorting="true" allowExcelExport="true" allowGrouping="true" allowMultiSorting="true" allowPdfExport="true" height="600" rowHeight="38" enableHover="false" enableHeaderFocus="true" enableVirtualization="true" allowSelection="true" 
+                               toolbarClick="toolbarClick" toolbar="@(new List<string>() {"ExcelExport", "PdfExport", "CsvExport" ,"Search"})">
+                      
+                        <e-grid-filtersettings type="Menu"></e-grid-filtersettings>
+
+                        <e-grid-selectionsettings persistSelection="true" type="Multiple" checkboxOnly="true"></e-grid-selectionsettings>
+                        <e-grid-columns>
+                            <e-grid-column field="" type="checkbox" width="20" allowFiltering="false" allowSorting="false"></e-grid-column>
+                            <e-grid-column field="Email" headerText="Email" textAlign="Left" width="60"></e-grid-column>
+                            <e-grid-column field="FullName" headerText="Full Name" textAlign="Left" width="60"></e-grid-column>
+                           
+                            <e-grid-column field="IsActive" headerText="Status" template="#statusTemplate" width="50"></e-grid-column>
+                            <e-grid-column field="UserType" headerText="User Type" textAlign="Left" width="80"></e-grid-column>
+                            <e-grid-column field="Password" headerText="Password" textAlign="Left" width="80"></e-grid-column>
+                            <e-grid-column headerText="Action" template="#Actions" width="50"></e-grid-column>
+                        </e-grid-columns>
+                    </ejs-grid>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@{
+
+    if (TempData["msg"] != null)
+    {
+        <script type="text/javascript">
+            const message = "@TempData["msg"]";
+            if (message == "@((int)MessageEnum.Success)") {
+                sweetAlert({
+                    html: true,
+                    icon: "success",
+                    title: "User",
+                    text: "Successfully created.",
+                    type: "success"
+                });
+            }
+            else if (message == "@((int)MessageEnum.Updated)") {
+                sweetAlert({
+                    html: true,
+                    icon: "success",
+                    title: "User",
+                    text: "Successfully updated.",
+                    type: "success"
+                });
+            }
+            else if (message == "@((int)MessageEnum.Deleted)") {
+                sweetAlert({
+                    html: true,
+                    icon: "success",
+                    title: "User",
+                    text: "Successfully Deleted.",
+                    type: "success"
+                });
+            }
+            else if (message == "@((int)MessageEnum.Duplicate)") {
+                sweetAlert({
+                    html: true,
+                    icon: "warning",
+                    title: "User",
+                    text: "Already Exists.",
+                    type: "warning"
+                });
+            }
+            else if (message == "@((int)MessageEnum.UnExpectedError)") {
+                sweetAlert({
+                    html: true,
+                    icon: "danger",
+                    title: "User",
+                    text: "There is somthing going wrong.",
+                    type: "danger"
+                });
+            }
+            else if (message == "@((int)MessageEnum.Error)") {
+                sweetAlert({
+                    html: true,
+                    icon: "error",
+                    title: "User",
+                    text: "There is somthing going wrong.",
+                    type: "error"
+                });
+            }
+            else {
+                sweetAlert({
+                    html: true,
+                    icon: "error",
+                    title: "User",
+                    text: message,
+                    type: "error"
+                });
+            }
+        </script>
+    }
+}
+
+<script type="text/javascript">
+    function Delete(ID) {
+        swal({
+            title: "Are you sure?",
+            text: "You will not be able to recover this data!",
+            icon: "warning",
+            buttons: [
+                'No, cancel it!',
+                'Yes, I am sure!'
+            ],
+            confirmButtonColor: "#DD6B55",
+            dangerMode: true,
+        }).then(function (isConfirm) {
+            if (isConfirm) {
+                window.location.href = "../../SetUp/User/DeleteUser?UserId=" + ID;
+            }
+        })
+    }
+</script>
+
+<script id="Actions" type="text/x-template">
+    <div class="link">
+        <a href="../../SetUp/User/CreateUser?UserId=${UserId}"><i class="icon-pencil3" style="font-size:22px"></i></a> &nbsp;&nbsp;&nbsp;
+          <button onClick="Delete(${UserId})" style="background: transparent;border: none;"><i class="icon-trash" style="font-size:22px"></i></button>
+       
+    </div>
+</script>
+<script id="statusTemplate" type="text/x-template">
+    ${statusDetail(data)}
+</script>
+<script>
+
+       function toolbarClick(args) {
+        var gridObj = document.getElementById("GridOverview").ej2_instances[0];
+        if (args.item.id === 'GridOverview_pdfexport') {
+            gridObj.pdfExport();
+        }
+        if (args.item.id === 'GridOverview_excelexport') {
+            gridObj.excelExport();
+        }
+        if (args.item.id === 'GridOverview_csvexport') {
+            gridObj.csvExport();
+        }
+    }
+    function exportQueryCellInfo(args) {
+        if (args.column.headerText === 'Employee Image') {
+            if (args.name === "excelQueryCellInfo") {
+                args.image = { height: 75, base64: args.data["EmployeeImage"], width: 75 };
+            } else {
+                args.image = { base64: args.data["EmployeeImage"] };
+            }
+        }
+        if (args.column.headerText === 'Track') {
+            args.hyperLink = {
+                target: "../../DMS/DesktopLogin/Track?id=" + args.data["erpUser"],
+                displayText: "Track"
+            };
+        }
+    };
+   
+    
+    function statusDetail(e) {
+       
+        if (e.IsActive == true) {
+            return '<span class="badge badge-pill badge-success" > Active </span>';
+        } else {
+           return '<span class="badge badge-pill badge-dark">In-Active</span>';
+        }
+        
+      
+    }
+</script>

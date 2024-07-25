@@ -1,0 +1,150 @@
+﻿@using System.Collections;
+@using Newtonsoft.Json;
+@model CloudVOffice.Data.DTO.Comunication.EmailAccountDTO;
+@{
+    Layout = "_MainAppLayout";
+	ViewData["Title"] = "EmailAccount Create";
+	var domainList = new SelectList((IEnumerable)ViewBag.EmailDomains, "DomainId", "DomainName");
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<header class="main-heading">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+                <div class="page-icon">
+                    <i class="icon-laptop_windows"></i>
+                </div>
+                <div class="page-title">
+                    <h5>Email Dashboard</h5>
+                    <h6 class="sub-heading">  </h6>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+                <div class="right-actions">
+                    <span class="last-login"> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="main-content">
+	<div class="row gutters">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+			<div class="card">
+				<form asp-route="Setup/EmailAccount/EmailAccountCreate" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly" class="message-error"></div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<input asp-for="@Model.EmailAccountId" type="hidden" />
+								<span asp-validation-for="EmailAccountId"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+
+								<label for="EmailAddress" class="form-label">Email Address&nbsp;<span style="color:red;"><b>*</b></span></label>
+								<input asp-for="@Model.EmailAddress" type="text" class="form-control" autofocus="autofocus" placeholder="Email Address" />
+								<span asp-validation-for="EmailAddress"></span>
+							</div>
+						
+							<div class="form-group col-md-3">
+
+								<label for="EmailDomainId" class="form-label">Domain</label>
+								<ejs-dropdownlist id="EmailDomainId" allowFiltering="true" ejs-for="@Model.Domain" filtering="onDomainrfiltering" dataSource="@(new SelectList((IEnumerable)ViewBag.EmailDomains, "EmailDomainId", "DomainName").Items)" placeholder="Select Domain" popupHeight="220px">
+									<e-dropdownlist-fields text="DomainName" value="EmailDomainId"></e-dropdownlist-fields>
+								</ejs-dropdownlist>
+
+
+								<span asp-validation-for="Domain"></span>
+							</div>
+
+						</div>
+						<div class="form-row">
+							
+
+								<div class="form-group col-md-3">
+								<label for="EmailAccountName" class="form-label">Email Account Name&nbsp;<span style="color:red;"><b>*</b></span></label>
+									<input asp-for="@Model.EmailAccountName" type="text" class="form-control" autofocus="autofocus" placeholder="Email Account Name" />
+									<span asp-validation-for="EmailAccountName"></span>
+								</div>
+
+								<div class="form-group col-md-3">
+								<label for="EmailPassword" class="form-label">Email Password&nbsp;<span style="color:red;"><b>*</b></span></label>
+									<input asp-for="@Model.EmailPassword" type="text" class="form-control" autofocus="autofocus" placeholder="Email Password" />
+									<span asp-validation-for="EmailPassword"></span>
+								</div>
+
+								<div class="form-group col-md-3">
+								<label for="AlternativeEmailAddress" class="form-label">Alternative Email Address&nbsp;<span style="color:red;"><b>*</b></span></label>
+									<input asp-for="@Model.AlternativeEmailAddress" type="text" class="form-control" autofocus="autofocus" placeholder="Alternative Email Address" />
+									<span asp-validation-for="AlternativeEmailAddress"></span>
+								</div>
+
+						</div>
+
+						<div class="form-row">
+							
+							<div class="form-group col-md-3">
+								<label for="EmailSignature" class="form-label">Email Signature</label>
+								<textarea asp-for="@Model.EmailSignature" type="text" class="input-with-feedback form-control" data-fieldtype="Small Text" autofocus="autofocus" placeholder="Email Signature" style="height: 150px;"></textarea>
+								<span asp-validation-for="EmailSignature"></span>
+							</div>
+
+							<div class="form-group col-md-3">
+								<label for="EmailLogo" class="form-label">Email Logo</label>
+								<input asp-for="@Model.EmailLogoUp" type="file" class="form-control" autofocus="autofocus" placeholder="Email Logo" />
+								<span asp-validation-for="EmailLogo"></span>
+								@{
+									if (Model.EmailLogo != null)
+									{
+										<img src="/uploads/setup/@Model.EmailLogo" style="height:100px; width:100px" />
+										<input type="hidden" asp-for="@Model.EmailLogo">
+									}
+								}
+							</div>
+						
+
+							<div class="form-group col-md-3">
+								<label for="IsDefaultSending" class="form-label">Is Default Sending</label>
+								<input asp-for="@Model.IsDefaultSending" type="checkbox" class="form-control" autofocus="autofocus" placeholder="Is Default Sending" />
+								<span asp-validation-for="IsDefaultSending"></span>
+							</div>
+
+						</div>
+
+
+					</div>
+
+					<div class="card-body">
+
+						<div class="col-lg-2 col-md-2 col-sm-12">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+
+
+
+		</div>
+	</div>
+
+</div>
+
+
+<script>
+	function onDomainrfiltering(e) {
+		var query = new ej.data.Query();
+		query = (e.text !== '') ? query.where('DomainsName', 'startswith', e.text, true) : query;
+		e.updateData(@Html.Raw(JsonConvert.SerializeObject(ViewBag.EmailDomains)), query);
+	}
+</script>

@@ -1,0 +1,130 @@
+﻿@model CloudVOffice.Data.DTO.Company.LetterHeadDTO;
+@{
+	Layout = "_MainAppLayout";
+	ViewData["Title"] = "LetterHead Create";
+}
+@addTagHelper *, Syncfusion.EJ2
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<header class="main-heading">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-8 col-lg-8 col-md-8 col-sm-8">
+				<div class="page-icon">
+					<i class="icon-laptop_windows"></i>
+				</div>
+				<div class="page-title">
+					<h5>Letter Head</h5>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4">
+				<div class="right-actions">
+					<span class="last-login">Last Login: 2 hours ago</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<div class="main-content">
+	<div class="row gutters">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+			<div class="card">
+				<form asp-route="Setup/LetterHead/LetterHeadCreate" method="post" autocomplete="off" enctype="multipart/form-data">
+					<div asp-validation-summary="ModelOnly" class="message-error"></div>
+					<div class="card-header"><b>Letter Head</b></div>
+					<div class="card-body">
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<input asp-for="@Model.LetterHeadId" type="hidden" />
+								<span asp-validation-for="LetterHeadId"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="LetterHeadName" class="form-label">LetterHead Name</label>
+								<input asp-for="@Model.LetterHeadName" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead Name" />
+								<span asp-validation-for="LetterHeadName"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="LetterHeadImage" class="form-label">LetterHead Image</label>
+								<input asp-for="@Model.LetterHeadImageUp" type="file" class="form-control" autofocus="autofocus" placeholder="LetterHead Image" />
+								<span asp-validation-for="LetterHeadImage"></span>
+								@{
+									if (Model.LetterHeadImage != null)
+									{
+										<img src="/uploads/setup/@Model.LetterHeadImage" style="height:100px; width:100px" />
+										<input type="hidden" asp-for="@Model.LetterHeadImage">
+									}
+								}
+							</div>
+							<div class="form-group col-md-3">
+								<label for="LetterHeadImageHeight" class="form-label">LetterHead ImageHeight</label>
+								<input asp-for="@Model.LetterHeadImageHeight" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead ImageHeight" />
+								<span asp-validation-for="LetterHeadImageHeight"></span>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-group col-md-3">
+								<label for="LetterHeadImageWidth" class="form-label">LetterHead ImageWidth</label>
+								<input asp-for="@Model.LetterHeadImageWidth" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead ImageWidth" />
+								<span asp-validation-for="LetterHeadImageWidth"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="LetterHeadAlign" class="form-label">LetterHead Align</label>
+								<select input asp-for="@Model.LetterHeadAlign" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead Align">
+									<option value="Left">Left</option>
+									<option value="Right">Right</option>
+									<option value="Centre">Centre</option>
+								</select>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="LetterHeadFooterImage" class="form-label">LetterHead FooterImage</label>
+								<input asp-for="@Model.LetterHeadFooterImageUP" type="file" class="form-control" autofocus="autofocus" placeholder="LetterHead FooterImage" />
+								<span asp-validation-for="LetterHeadFooterImage"></span>
+								@{
+									if (Model.LetterHeadFooterImage != null)
+									{
+										<img src="/uploads/setup/@Model.LetterHeadFooterImage" style="height:100px; width:100px" />
+										<input type="hidden" asp-for="@Model.LetterHeadFooterImage">
+									}
+								}
+
+							</div>
+						</div>
+						<div class="form-row">
+							
+							<div class="form-group col-md-3">
+								<label for="LetterHeadImageFooterHeight" class="form-label">LetterHead ImageFooterHeight</label>
+								<input asp-for="@Model.LetterHeadImageFooterHeight" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead ImageFooterHeightl" />
+								<span asp-validation-for="LetterHeadImageFooterHeight"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="LetterHeadImageFooterWidth" class="form-label">LetterHead ImageFooterWidth</label>
+								<input asp-for="@Model.LetterHeadImageFooterWidth" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead ImageFooterWidth" />
+								<span asp-validation-for="LetterHeadImageFooterWidth"></span>
+							</div>
+							<div class="form-group col-md-3">
+								<label for="LetterHeadFooterAlign" class="form-label">LetterHead FooterAlign</label>
+								<select input asp-for="@Model.LetterHeadFooterAlign" type="text" class="form-control" autofocus="autofocus" placeholder="LetterHead FooterAlign">
+									<option value="Left">Left</option>
+									<option value="Right">Right</option>
+									<option value="Centre">Centre</option>
+								</select>
+							</div>
+
+						</div>
+						
+					</div>
+
+					<div class="card-body">
+						<div class="col-lg-2 col-md-2 col-sm-12">
+							<button type="submit" class="btn btn-primary">Save</button>
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

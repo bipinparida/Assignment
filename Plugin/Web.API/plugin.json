@@ -1,0 +1,14 @@
+﻿{
+  "Group": "Web Api",
+  "FriendlyName": "Web Api",
+  "SystemName": "Web.Api",
+  "Version": 0.1,
+  "SupportedVersions": [ "0.1" ],
+  "Author": "Appman team",
+  "DisplayOrder": 1,
+  "FileName": "Web.Api.dll",
+  "Description": "API For Owned/Third Party Applications.",
+  "InstallationUrl": "/PROJECT/PROJECTMANAGEMENT/Install",
+  "UnInstallationUrl": "/PROJECT/PROJECTMANAGEMENT/Installation/UnInstall",
+  "Dependency": [  ]
+}
